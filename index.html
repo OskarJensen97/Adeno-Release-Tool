@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ServiceNow Australia Release Notes – Adeno</title>
+  <link rel="icon" href="https://adeno.dk/wp-content/uploads/2026/03/Adeno-Black-Text-Transparent.png">
+
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: #FBFCF2;
+    }
+
+    /* ═══════════════════════════════════
+       BANNER STYLES
+       ═══════════════════════════════════ */
+    .adeno-release-banner,
+    .adeno-release-banner * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      line-height: normal;
+    }
+
+    .adeno-release-banner {
+      display: block;
+      padding: 0;
+      background: linear-gradient(135deg, #333333 0%, #3d2a2a 50%, #333333 100%);
+      border-bottom: 3px solid #FF3C5C;
+      cursor: pointer;
+      text-decoration: none !important;
+      color: white !important;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      transition: background 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .adeno-release-banner::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: radial-gradient(ellipse at 20% 50%, rgba(229, 57, 53, 0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .adeno-release-banner:hover {
+      background: linear-gradient(135deg, #3d3d3d 0%, #4a3030 50%, #3d3d3d 100%);
+      text-decoration: none !important;
+      color: white !important;
+    }
+
+    .adeno-release-banner .arb-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+      max-width: 1500px;
+      margin: 0 auto;
+      padding: 16px 28px;
+    }
+
+    .adeno-release-banner .arb-left {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-shrink: 0;
+    }
+
+    .adeno-release-banner .arb-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: #FF3C5C;
+      border-radius: 8px;
+      flex-shrink: 0;
+    }
+
+    .adeno-release-banner .arb-icon svg {
+      width: 20px;
+      height: 20px;
+      fill: white;
+    }
+
+    .adeno-release-banner .arb-text {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .adeno-release-banner .arb-title {
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      line-height: 1.3;
+      color: white;
+    }
+
+    .adeno-release-banner .arb-title span {
+      color: #FF3C5C;
+    }
+
+    .adeno-release-banner .arb-subtitle {
+      font-size: 12px;
+      color: rgba(255,255,255,0.7);
+      font-weight: 400;
+      letter-spacing: 0.01em;
+    }
+
+    .adeno-release-banner .arb-center {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      flex-shrink: 0;
+    }
+
+    .adeno-release-banner .arb-date {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.85);
+      white-space: nowrap;
+    }
+
+    .adeno-release-banner .arb-date svg {
+      width: 14px;
+      height: 14px;
+      fill: rgba(255,255,255,0.65);
+      flex-shrink: 0;
+    }
+
+    .adeno-release-banner .arb-divider {
+      width: 1px;
+      height: 28px;
+      background: rgba(255,255,255,0.15);
+    }
+
+    .adeno-release-banner .arb-cta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: #E53935;
+      color: white;
+      padding: 8px 20px;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      white-space: nowrap;
+      transition: background 0.2s ease, transform 0.2s ease;
+      flex-shrink: 0;
+    }
+
+    .adeno-release-banner:hover .arb-cta {
+      background: #c62828;
+      transform: translateX(2px);
+    }
+
+    .adeno-release-banner .arb-cta svg {
+      width: 14px;
+      height: 14px;
+      fill: white;
+      transition: transform 0.2s ease;
+    }
+
+    .adeno-release-banner:hover .arb-cta svg {
+      transform: translateX(3px);
+    }
+
+    @media (max-width: 900px) {
+      .adeno-release-banner .arb-inner {
+        flex-wrap: wrap;
+        gap: 16px;
+        padding: 14px 20px;
+      }
+      .adeno-release-banner .arb-center { gap: 16px; }
+    }
+
+    @media (max-width: 600px) {
+      .adeno-release-banner .arb-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+        padding: 12px 16px;
+      }
+      .adeno-release-banner .arb-icon {
+        width: 32px;
+        height: 32px;
+      }
+      .adeno-release-banner .arb-icon svg {
+        width: 16px;
+        height: 16px;
+      }
+      .adeno-release-banner .arb-left {
+        gap: 14px;
+      }
+      .adeno-release-banner .arb-title {
+        font-size: 13px;
+      }
+      .adeno-release-banner .arb-subtitle {
+        font-size: 11px;
+      }
+      .adeno-release-banner .arb-center {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+      }
+      .adeno-release-banner .arb-date {
+        font-size: 11px;
+      }
+      .adeno-release-banner .arb-date svg {
+        width: 12px;
+        height: 12px;
+      }
+      .adeno-release-banner .arb-divider { display: none; }
+      .adeno-release-banner .arb-cta {
+        align-self: stretch;
+        justify-content: center;
+        font-size: 12px;
+        padding: 7px 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════════════════
+       EVENT BANNER
+       ═══════════════════════════════════════════════════════ -->
+  <a href="https://airtable.com/appIAarGNSm7ihI4J/pagbbvCgWLUwOCYMq/form" target="_blank" rel="noopener noreferrer" class="adeno-release-banner">
+    <div class="arb-inner">
+      <div class="arb-left">
+        <div class="arb-icon">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19a2 2 0 002 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"/></svg>
+        </div>
+        <div class="arb-text">
+          <div class="arb-title">Beyond the Release Notes: <span>Australia</span></div>
+          <div class="arb-subtitle">Join our free release event and get Adeno's expert perspective on the Australia release.</div>
+        </div>
+      </div>
+      <div class="arb-center">
+        <div class="arb-date">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg>
+          Silkeborg - 26 May, 15:00–17:00
+        </div>
+        <div class="arb-divider"></div>
+        <div class="arb-date">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg>
+          Herlev - 28 May, 15:00–17:00
+        </div>
+      </div>
+      <div class="arb-cta">
+        Register Now
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
+      </div>
+    </div>
+  </a>
+
+  <!-- ═══════════════════════════════════════════════════════
+       ADENO — ServiceNow Australia Release Notes
+
+       TO UPDATE DATA:
+       1. Run the Airtable export script
+       2. Copy output → paste into release-data.js on GitHub
+       3. Data loads fresh every time (cache-busted)
+       ═══════════════════════════════════════════════════════ -->
+
+  <!-- ① DATA SOURCE — loaded dynamically with cache busting -->
+  <div id="adeno-release-root"></div>
+
+  <script>
+  // Load release data with cache-busting, then start the app
+  (function(){
+      var s = document.createElement('script');
+      s.src = 'https://oskarjensen97.github.io/release-data/release-data.js?v=' + Date.now();
+      s.onload = function(){ startApp(); };
+      s.onerror = function(){ window.ADENO_RELEASE_DATA = []; startApp(); };
+      document.head.appendChild(s);
+  })();
+
+  function startApp() {
+  (function() {
+      var DATA = window.ADENO_RELEASE_DATA || [];
+
+      /* ═══════════════════════════════════
+         TYPE BADGES — color + label for each type
+         Edit colors (c) and labels (l) here
+         ═══════════════════════════════════ */
+      var TC = {
+          'New feature':          { c: '#00D649', t: '#166534', l: 'New Feature' },
+          'Change':               { c: '#3B82F6', t: '#1E40AF', l: 'Change' },
+          'Removed':              { c: '#FF3C5C', t: '#9F1239', l: 'Removed' },
+          'Deprecation':          { c: '#F59E0B', t: '#92400E', l: 'Deprecated' },
+          'Activation Information':  { c: '#8B5CF6', t: '#5B21B6', l: 'Activation Information' },
+          'Additional Requirements': { c: '#6366F1', t: '#3730A3', l: 'Additional Requirements' },
+          'Browser Requirements':    { c: '#EC4899', t: '#9D174D', l: 'Browser Requirements' },
+          'Accessibility Information': { c: '#14B8A6', t: '#115E59', l: 'Accessibility Information' },
+          'Localization Information': { c: '#F97316', t: '#9A3412', l: 'Localization Information' },
+          'Important Information for upgrading': { c: '#DC2626', t: '#991B1B', l: 'Upgrade Info' },
+      };
+
+      /* ═══════════════════════════════════
+         ★ IMPORTANCE BADGES — edit colors here ★
+         ═══════════════════════════════════ */
+      var IMP = {
+          'Low':    { c: '#3B82F6', t: '#1E40AF' },
+          'Medium': { c: '#F59E0B', t: '#92400E' },
+          'High':   { c: '#DC2626', t: '#991B1B' },
+      };
+
+      /* ═══════════════════════════════════
+         STYLES
+         ═══════════════════════════════════ */
+      var CSS = '@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Raleway:wght@300;400;500;600&display=swap");'
+
+      /* --- Reset & base --- */
+      +':host{display:block;all:initial;font-family:"Raleway",sans-serif;color:#1F1F1F;line-height:1.5;font-size:14px;-webkit-font-smoothing:antialiased;overflow-x:hidden}'
+      +'*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;max-width:100%}'
+      +'img{max-width:100%;height:auto;display:inline-block;border:none}'
+      +'a{text-decoration:none;color:inherit}button{font-family:inherit;cursor:pointer}input{font-family:inherit}'
+      +'ul,ol{list-style-position:outside}'
+
+      /* --- Branding (above search in sidebar) --- */
+      +'.brand{display:flex;gap:14px;margin-bottom:20px}'
+      +'.brand__logo{height:22px;width:auto}'
+      +'.brand__div{width:1px;height:20px;background:#E8E6CC;flex-shrink:0}'
+      +'.brand__t{font-size:13px;font-weight:600;font-family:"Poppins",sans-serif;color:#555}'
+
+      /* --- Main container --- */
+      +'.mn{max-width:1500px;margin:0 auto;padding:28px 24px 80px;background:#FBFCF2}'
+
+      /* --- ★ TWO-COLUMN LAYOUT ★ --- */
+      +'.layout{display:flex;gap:32px;align-items:flex-start}'
+
+      /* --- Left sidebar (sticky) --- */
+      +'.sidebar{width:480px;flex-shrink:0;position:sticky;top:24px;max-height:calc(100vh - 48px);overflow-y:auto}'
+
+      /* --- Right content area --- */
+      +'.content{flex:1;min-width:0}'
+
+      /* --- Search bar --- */
+      +'.sr{position:relative;margin-bottom:20px}'
+      +'.sr__i{position:absolute;left:16px;top:50%;transform:translateY(-50%);font-size:15px;color:#999;pointer-events:none}'
+      +'.sr__in{width:100%;padding:13px 42px;border:1.5px solid #E8E6CC;border-radius:10px;font-size:14px;font-family:"Raleway",sans-serif;color:#1F1F1F;background:#fff;outline:none;transition:border-color .15s}'
+      +'.sr__in:focus{border-color:#FF3C5C}.sr__in::placeholder{color:#999}'
+      +'.sr__x{position:absolute;right:14px;top:50%;transform:translateY(-50%);background:none;border:none;color:#999;font-size:15px;padding:4px;display:none}'
+
+      /* --- Picker panels (products, types, importance, tags) --- */
+      +'.pk{background:#fff;border:1px solid #F0EFE4;border-radius:10px;margin-bottom:20px;overflow:hidden}'
+      +'.pk__tg{width:100%;padding:13px 18px;background:none;border:none;display:flex;align-items:center;justify-content:space-between;font-family:"Poppins",sans-serif}'
+      +'.pk__lb{font-size:13px;font-weight:600;color:#1F1F1F}'
+      +'.pk__ct{margin-left:10px;background:#FF3C5C;color:#fff;border-radius:10px;padding:2px 8px;font-size:11px;font-weight:700;display:none;vertical-align:middle}'
+      +'.pk__ch{color:#999;font-size:16px;transition:transform .2s;display:inline-block}'
+      +'.pk.open .pk__ch{transform:rotate(180deg)}'
+      +'.pk__bd{padding:4px 18px 16px;border-top:1px solid #F0EFE4;display:none}'
+      +'.pk.open .pk__bd{display:block}'
+      +'.pk__chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px}'
+
+      /* --- Chips (inactive + active) --- */
+      +'.ch{padding:6px 14px;border-radius:20px;border:1.5px solid #E8E6CC;background:#FBFCF2;color:#555;font-size:12px;font-weight:400;font-family:"Raleway",sans-serif;transition:all .12s;user-select:none}'
+      +'.ch.on{border:2px solid #FF3C5C;background:#FFF0F3;color:#FF3C5C;font-weight:600}'
+      +'.chc{border-radius:8px;color:#333;font-weight:500}'
+      +'.chc.on{border-left:3px solid #FF3C5C}'
+
+      /* --- Clear selection link --- */
+      +'.pk__clr{margin-top:10px;background:none;border:none;color:#FF3C5C;font-size:12px;font-weight:500;font-family:"Poppins",sans-serif;padding:0;display:none}'
+
+      /* --- Results count --- */
+      +'.cnt{margin-bottom:24px;font-size:13px;color:#999}'
+      +'.cnt b{color:#FF3C5C;font-weight:600}'
+
+      /* --- Application sections --- */
+      +'.sec{margin-bottom:36px}.sec.hid{display:none}'
+      +'.sec__h{display:flex;align-items:center;gap:12px;margin-bottom:10px;padding-bottom:8px;border-bottom:2px solid #E8E6CC}'
+      +'.sec__toggle{display:flex;align-items:center;gap:8px;flex:1;min-width:0;background:none;border:none;padding:0;text-align:left;cursor:pointer}'
+      +'.sec__t{font-size:16px;font-weight:700;font-family:"Poppins",sans-serif;color:#1F1F1F;line-height:1.3}'
+      +'.sec__chev{font-size:12px;color:#999;transition:transform .2s;flex-shrink:0}'
+      +'.sec.closed .sec__chev{transform:rotate(-90deg)}'
+      +'.sec.closed .cds{display:none}'
+
+      /* --- ★ RELEASE NOTE BUTTON — edit color here ★ --- */
+      +'.rl{display:inline-flex;align-items:center;gap:5px;padding:5px 14px;border-radius:6px;background:#62D84E;color:#fff;font-size:11px;font-weight:600;font-family:"Poppins",sans-serif;text-decoration:none;white-space:nowrap;flex-shrink:0;transition:transform .12s,box-shadow .12s}'
+      +'.rl:hover{transform:translateY(-1px);box-shadow:0 3px 10px rgba(98,216,78,.3);color:#fff}'
+
+      /* --- Cards --- */
+      +'.cds{display:flex;flex-direction:column;gap:8px}'
+      +'.cd{background:#fff;border-radius:10px;border:1px solid #F0EFE4;padding:14px 18px;transition:box-shadow .15s;overflow:hidden;overflow-wrap:anywhere;word-break:break-word}'
+      +'.cd:hover{box-shadow:0 2px 12px rgba(0,0,0,.05)}.cd.hid{display:none}'
+
+      /* --- Card meta row (type badge + importance + product tags) --- */
+      +'.cd__m{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-bottom:8px}'
+      +'.tb{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:600;font-family:"Poppins",sans-serif;padding:2px 9px;border-radius:4px}'
+      +'.tb__d{width:6px;height:6px;border-radius:50%;display:inline-block;flex-shrink:0}'
+
+      /* --- Importance badge --- */
+      +'.imp{font-size:10.5px;font-weight:600;font-family:"Poppins",sans-serif;padding:2px 8px;border-radius:4px}'
+
+      /* --- Product tags on cards --- */
+      +'.pt{font-size:10.5px;font-weight:500;color:#666;background:#F0EFE4;padding:2px 8px;border-radius:4px;font-family:"Raleway",sans-serif;transition:color .12s,background .12s}'
+      +'.pt.hi{color:#FF3C5C;background:#FFF0F3}'
+
+      /* --- Tags on cards --- */
+      +'.cd__tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:8px;padding-top:8px;border-top:1px dashed #F0EFE4}'
+      +'.tg{font-size:10px;font-weight:500;color:#5B21B6;background:#EDE9FE;padding:2px 7px;border-radius:3px;font-family:"Raleway",sans-serif}'
+
+      /* --- Card details (rich text content) --- */
+      +'.cd__dt{font-size:13px;line-height:1.7;color:#555;overflow:hidden;overflow-wrap:anywhere;word-break:break-word}'
+      +'.cd__dt a{color:#FF3C5C;text-decoration:none;word-break:break-all}.cd__dt a:hover{text-decoration:underline}'
+      +'.cd__dt ul,.cd__dt ol{padding-left:18px;margin:4px 0}.cd__dt li{margin:2px 0}.cd__dt p{margin:4px 0}'
+      +'.cd__dt strong,.cd__dt b{color:#1F1F1F}'
+      +'.cd__dt code{background:#F0EFE4;padding:1px 5px;border-radius:3px;font-size:12px;word-break:break-all}'
+      +'.cd__dt pre{overflow-x:auto;max-width:100%}'
+      +'.cd__dt h1,.cd__dt h2,.cd__dt h3,.cd__dt h4{font-size:14px;font-weight:600;color:#FF3C5C;margin:6px 0 2px;font-family:"Poppins",sans-serif}'
+
+      /* --- Resource links section --- */
+      +'.cd__res{margin-top:10px;padding-top:8px;border-top:1px solid #F0EFE4;font-size:13px;line-height:1.7;color:#555;overflow:hidden;overflow-wrap:anywhere;word-break:break-word}'
+      +'.cd__res__label{display:block;font-size:11px;font-weight:600;font-family:"Poppins",sans-serif;color:#999;margin-bottom:4px;text-transform:uppercase;letter-spacing:.5px}'
+      +'.cd__res a{color:#000;text-decoration:none;word-break:break-all;display:block;margin:2px 0}.cd__res a:hover{text-decoration:underline}'
+      +'.cd__res ul,.cd__res ol{padding-left:18px;margin:4px 0}.cd__res li{margin:2px 0}.cd__res p{margin:4px 0}'
+
+      /* --- Per-card release note link --- */
+      +'.cd__lk{margin-top:10px}'
+      +'.cd__lk a{font-size:12px;font-weight:600;font-family:"Poppins",sans-serif;color:#FF3C5C;display:inline-flex;align-items:center;gap:4px}'
+
+      /* --- Empty state --- */
+      +'.ey{text-align:center;padding:60px 20px;background:#fff;border-radius:12px;border:1px solid #F0EFE4;display:none}'
+      +'.ey.vis{display:block}'
+      +'.ey__i{font-size:36px;margin-bottom:12px;opacity:.3}'
+      +'.ey__t{color:#555;font-size:15px;font-weight:600;font-family:"Poppins",sans-serif}'
+      +'.ey__s{color:#999;font-size:13px;margin-top:6px}'
+
+      /* --- Footer --- */
+      +'.ft{display:flex;align-items:center;justify-content:center;gap:10px;margin-top:48px;padding-top:20px;border-top:1px solid #E8E6CC}'
+      +'.ft__logo{height:15px;width:auto;opacity:.3}.ft__t{font-size:11px;color:#999}'
+
+      /* --- ★ RESPONSIVE BREAKPOINTS ★ --- */
+
+      /* --- Tablet (861–1100px): narrower sidebar --- */
+      +'@media(max-width:1100px){'
+      +'.sidebar{width:400px}'
+      +'.mn{padding:24px 20px 60px}'
+      +'}'
+
+      /* --- Small tablet / large phone (max 860px): single column --- */
+      +'@media(max-width:860px){'
+      +'.mn{padding:20px 16px 60px}'
+      +'.layout{flex-direction:column;gap:0}'
+      +'.sidebar{width:100%;position:static;max-height:none;overflow-y:visible;margin-bottom:20px}'
+      /* Collapse pickers by default on mobile */
+      +'.pk .pk__bd{display:none}'
+      +'.pk .pk__ch{transform:rotate(0deg)}'
+      +'.pk.open .pk__bd{display:block}'
+      +'.pk.open .pk__ch{transform:rotate(180deg)}'
+      +'}'
+
+      /* --- Phone (max 480px): proper mobile layout --- */
+      +'@media(max-width:480px){'
+
+      /* Branding */
+      +'.brand{gap:10px;margin-bottom:16px}'
+      +'.brand__logo{height:18px}'
+      +'.brand__t{font-size:12px}'
+
+      /* Main */
+      +'.mn{padding:16px 12px 48px}'
+
+      /* Search */
+      +'.sr{margin-bottom:16px}'
+      +'.sr__in{padding:12px 40px;font-size:14px;border-radius:8px}'
+
+      /* Picker */
+      +'.pk{margin-bottom:16px;border-radius:8px}'
+      +'.pk__tg{padding:12px 14px}'
+      +'.pk__bd{padding:4px 14px 14px}'
+      +'.pk__chips{gap:6px;margin-top:10px}'
+      +'.ch{padding:7px 12px;font-size:12px;border-radius:16px}'
+
+      /* Count */
+      +'.cnt{margin-bottom:16px}'
+
+      /* Sections */
+      +'.sec{margin-bottom:24px}'
+      +'.sec__h{gap:8px;padding-bottom:6px;margin-bottom:8px}'
+      +'.sec__t{font-size:12px}'
+
+      /* Release button */
+      +'.rl{padding:6px 6px;font-size:7px;border-radius:4px;align-self:flex-start}'
+
+      /* Cards */
+      +'.cd{padding:12px 14px;border-radius:8px;overflow:hidden}'
+      +'.cd__m{gap:5px;margin-bottom:6px}'
+      +'.cd__m .pt{font-size:10px;padding:2px 6px}'
+      +'.cd__dt{font-size:13px;line-height:1.6}'
+      +'.cd__dt ul,.cd__dt ol{padding-left:16px}'
+
+      /* Footer */
+      +'.ft{margin-top:32px;padding-top:16px}'
+
+      +'}';
+
+      /* ═══════════════════════════════════
+         HTML TEMPLATE
+         Edit logos, titles, placeholder text here
+         ═══════════════════════════════════ */
+      var TPL = ''
+
+      +'<main class="mn">'
+
+      /* --- ★ TWO-COLUMN LAYOUT ★ --- */
+      +'<div class="layout">'
+
+      /* --- LEFT: Sticky sidebar --- */
+      +'<div class="sidebar">'
+
+      /* --- Branding (logo + title) --- */
+      +'<div class="brand">'
+      +'<a href="https://www.adeno.dk" target="_blank" rel="noopener noreferrer"><img class="brand__logo" src="https://adeno.dk/wp-content/uploads/2026/03/Adeno-Black-Text-Transparent.png" alt="Adeno"></a>'
+      +'<div class="brand__div"></div>'
+      +'<span class="brand__t">ServiceNow Australia Release Tool</span>'
+      +'</div>'
+
+      /* --- Search bar --- */
+      +'<div class="sr"><span class="sr__i">⌕</span>'
+      +'<input type="text" class="sr__in" id="si" placeholder="Search features, details, products...">'
+      +'<button class="sr__x" id="sx">✕</button></div>'
+
+      /* --- Product picker --- */
+      +'<div class="pk" id="pk">'
+      +'<button class="pk__tg" id="pt"><span class="pk__lb">Filter by products <span class="pk__ct" id="pc">0</span></span><span class="pk__ch">⏷</span></button>'
+      +'<div class="pk__bd"><div class="pk__chips" id="ch"></div><button class="pk__clr" id="pcl">Clear selection</button></div></div>'
+
+      /* --- Type filter --- */
+      +'<div class="pk" id="tk">'
+      +'<button class="pk__tg" id="tt"><span class="pk__lb">Filter by type <span class="pk__ct" id="tc">0</span></span><span class="pk__ch">⏷</span></button>'
+      +'<div class="pk__bd"><div class="pk__chips" id="tch"></div><button class="pk__clr" id="tcl">Clear selection</button></div></div>'
+
+      /* --- Importance filter --- */
+      +'<div class="pk" id="ik">'
+      +'<button class="pk__tg" id="it"><span class="pk__lb">Filter by importance <span class="pk__ct" id="ic">0</span></span><span class="pk__ch">⏷</span></button>'
+      +'<div class="pk__bd"><div class="pk__chips" id="ich"></div><button class="pk__clr" id="icl">Clear selection</button></div></div>'
+
+      /* --- Tags filter --- */
+      +'<div class="pk" id="gk">'
+      +'<button class="pk__tg" id="gt"><span class="pk__lb">Filter by tags <span class="pk__ct" id="gc">0</span></span><span class="pk__ch">⏷</span></button>'
+      +'<div class="pk__bd"><div class="pk__chips" id="gch"></div><button class="pk__clr" id="gcl">Clear selection</button></div></div>'
+
+      /* --- Results count (in sidebar) --- */
+      +'<div class="cnt" id="cnt"></div>'
+
+      +'</div>'
+      /* --- END sidebar --- */
+
+      /* --- RIGHT: Content area --- */
+      +'<div class="content">'
+      +'<div id="co"></div>'
+
+      /* --- Empty state --- */
+      +'<div class="ey" id="ey"><div class="ey__i">⌕</div><div class="ey__t">No matching features</div><div class="ey__s">Try a different search or adjust your product selection</div></div>'
+
+      +'</div>'
+      /* --- END content --- */
+
+      +'</div>'
+      /* --- END layout --- */
+
+      /* --- Footer --- */
+      +'<div class="ft">'
+      +'<span class="ft__t">ServiceNow Australia Release Notes Curated by Adeno K/S</span>'
+      +'</div></main>';
+
+      /* ═══════════════════════════════════
+         ENGINE — no need to edit below here
+         ═══════════════════════════════════ */
+      var sel = new Set(), selTypes = new Set(), selImp = new Set(), selTags = new Set(), sq = '';
+
+      function rgba(h,a){return 'rgba('+parseInt(h.slice(1,3),16)+','+parseInt(h.slice(3,5),16)+','+parseInt(h.slice(5,7),16)+','+a+')';}
+      function e(s){if(!s)return '';var d=document.createElement('div');d.textContent=s;return d.innerHTML;}
+      function strip(h){var d=document.createElement('div');d.innerHTML=h||'';return d.textContent||'';}
+
+      function grp(d){var m=new Map();d.forEach(function(x,i){x._i=i;var k=x.name.trim();if(!m.has(k))m.set(k,[]);m.get(k).push(x);});return Array.from(m.entries()).sort(function(a,b){return a[0].localeCompare(b[0]);});}
+      function prods(d){var s=new Set();d.forEach(function(r){r.products.forEach(function(p){s.add(p);});});return Array.from(s).sort();}
+      function types(d){var s=new Set();d.forEach(function(r){if(r.type)s.add(r.type);});return Array.from(s).sort();}
+      function allTags(d){var s=new Set();d.forEach(function(r){if(r.tags)r.tags.forEach(function(t){s.add(t);});});return Array.from(s).sort();}
+
+      function chips(R,ps){R.getElementById('ch').innerHTML=ps.map(function(p){return '<button class="ch" data-p="'+e(p)+'">'+e(p)+'</button>';}).join('');}
+
+      function typeChips(R,ts){R.getElementById('tch').innerHTML=ts.map(function(t){
+          var c=TC[t]||{c:'#999',l:t};
+          return '<button class="ch chc" data-tp="'+e(t)+'" style="border-left:3px solid '+c.c+'">'+e(c.l)+'</button>';
+      }).join('');}
+
+      function impChips(R){var levels=['Low','Medium','High'];R.getElementById('ich').innerHTML=levels.map(function(l){
+          var c=IMP[l]||{c:'#999'};
+          return '<button class="ch chc" data-ip="'+e(l)+'" style="border-left:3px solid '+c.c+'">'+e(l)+'</button>';
+      }).join('');}
+
+      function tagChips(R,ts){R.getElementById('gch').innerHTML=ts.map(function(t){
+          return '<button class="ch chc" data-tg="'+e(t)+'" style="border-left:3px solid #8B5CF6">'+e(t)+'</button>';
+      }).join('');}
+
+      function render(R,gs){
+          var h='';
+          for(var g=0;g<gs.length;g++){
+              var a=gs[g][0],its=gs[g][1],gl=null;
+              for(var i=0;i<its.length;i++){if(its[i].link){gl=its[i].link;break;}}
+              h+='<section class="sec closed" data-a="'+e(a)+'"><div class="sec__h">';
+              h+='<button class="sec__toggle" data-toggle><span class="sec__chev">⏷</span><h2 class="sec__t">'+e(a)+'</h2></button>';
+              if(gl)h+='<a href="'+e(gl)+'" target="_blank" rel="noopener noreferrer" class="rl">Full Release Note</a>';
+              h+='</div><div class="cds">';
+              for(var j=0;j<its.length;j++){
+                  var it=its[j],c=TC[it.type]||{c:'#999',l:it.type||'—'};
+                  var imp=it.importance||'';
+                  var tgs=(it.tags||[]).join('||');
+                  h+='<div class="cd" data-n="'+e(it.name.toLowerCase())+'" data-d="'+e(strip(it.details).toLowerCase())+'" data-p="'+e(it.products.join('||'))+'" data-sp="'+e(it.products.join('||').toLowerCase())+'" data-type="'+e(it.type)+'" data-imp="'+e(imp)+'" data-tags="'+e(tgs)+'">';
+                  h+='<div class="cd__m"><span class="tb" style="color:'+(c.t||c.c)+';background:'+rgba(c.c,.1)+';border:1px solid '+rgba(c.c,.25)+'"><span class="tb__d" style="background:'+c.c+'"></span>'+e(c.l)+'</span>';
+                  if(imp){var ic=IMP[imp]||{c:'#999',t:'#555'};h+='<span class="imp" style="color:'+ic.t+';background:'+rgba(ic.c,.1)+';border:1px solid '+rgba(ic.c,.25)+'">'+e(imp)+'</span>';}
+                  for(var k=0;k<it.products.length;k++)h+='<span class="pt" data-t="'+e(it.products[k])+'">'+e(it.products[k])+'</span>';
+                  h+='</div>';
+                  if(it.details)h+='<div class="cd__dt">'+it.details+'</div>';
+                  if(it.resources)h+='<div class="cd__res"><span class="cd__res__label">Useful Resources</span>'+it.resources+'</div>';
+                  if(it.tags&&it.tags.length)h+='<div class="cd__tags">'+it.tags.map(function(t){return '<span class="tg">'+e(t)+'</span>';}).join('')+'</div>';
+                  if(it.link&&it.link!==gl)h+='<div class="cd__lk"><a href="'+e(it.link)+'" target="_blank" rel="noopener noreferrer">↗ ServiceNow Release Note</a></div>';
+                  h+='</div>';
+              }
+              h+='</div></section>';
+          }
+          R.getElementById('co').innerHTML=h;
+      }
+
+      function filt(R){
+          var q=sq.toLowerCase().trim(),cds=R.querySelectorAll('.cd'),scs=R.querySelectorAll('.sec'),tot=0,vis=new Set();
+          cds.forEach(function(cd){
+              var pS=true,pP=true,pT=true,pI=true,pG=true;
+              if(q)pS=cd.dataset.n.indexOf(q)!==-1||cd.dataset.d.indexOf(q)!==-1||cd.dataset.sp.indexOf(q)!==-1;
+              if(sel.size>0)pP=cd.dataset.p.split('||').some(function(p){return sel.has(p);});
+              if(selTypes.size>0)pT=selTypes.has(cd.dataset.type);
+              if(selImp.size>0)pI=selImp.has(cd.dataset.imp);
+              if(selTags.size>0){var cardTags=cd.dataset.tags?cd.dataset.tags.split('||'):[];pG=cardTags.some(function(t){return selTags.has(t);});}
+              if(pS&&pP&&pT&&pI&&pG){cd.classList.remove('hid');tot++;var s=cd.closest('.sec');if(s)vis.add(s.dataset.a);}
+              else cd.classList.add('hid');
+          });
+          scs.forEach(function(s){if(vis.has(s.dataset.a))s.classList.remove('hid');else s.classList.add('hid');});
+          R.querySelectorAll('.pt').forEach(function(t){if(sel.has(t.dataset.t))t.classList.add('hi');else t.classList.remove('hi');});
+          var tx=tot+' feature'+(tot!==1?'s':'')+' across '+vis.size+' application'+(vis.size!==1?'s':'');
+          if(sel.size>0)tx+=' · <b>'+sel.size+' product'+(sel.size>1?'s':'')+' selected</b>';
+          if(selTypes.size>0)tx+=' · <b>'+selTypes.size+' type'+(selTypes.size>1?'s':'')+' selected</b>';
+          if(selImp.size>0)tx+=' · <b>'+selImp.size+' importance selected</b>';
+          if(selTags.size>0)tx+=' · <b>'+selTags.size+' tag'+(selTags.size>1?'s':'')+' selected</b>';
+          R.getElementById('cnt').innerHTML=tx;
+          R.getElementById('ey').classList.toggle('vis',tot===0);
+          var b=R.getElementById('pc');b.textContent=sel.size;b.style.display=sel.size>0?'inline':'none';
+          R.getElementById('pcl').style.display=sel.size>0?'block':'none';
+          var bt=R.getElementById('tc');bt.textContent=selTypes.size;bt.style.display=selTypes.size>0?'inline':'none';
+          R.getElementById('tcl').style.display=selTypes.size>0?'block':'none';
+          var bi=R.getElementById('ic');bi.textContent=selImp.size;bi.style.display=selImp.size>0?'inline':'none';
+          R.getElementById('icl').style.display=selImp.size>0?'block':'none';
+          var bg=R.getElementById('gc');bg.textContent=selTags.size;bg.style.display=selTags.size>0?'inline':'none';
+          R.getElementById('gcl').style.display=selTags.size>0?'block':'none';
+      }
+
+      function init(){
+          var host=document.getElementById('adeno-release-root');
+          var R=host.attachShadow({mode:'open'});
+          var st=document.createElement('style');st.textContent=CSS;R.appendChild(st);
+          var w=document.createElement('div');w.innerHTML=TPL;R.appendChild(w);
+
+          var gs=grp(DATA),ps=prods(DATA),ts=types(DATA),tgs=allTags(DATA);
+          chips(R,ps);typeChips(R,ts);impChips(R);tagChips(R,tgs);render(R,gs);filt(R);
+
+          var si=R.getElementById('si');
+          si.addEventListener('input',function(){sq=si.value;R.getElementById('sx').style.display=si.value?'block':'none';filt(R);});
+          R.getElementById('sx').addEventListener('click',function(){si.value='';sq='';R.getElementById('sx').style.display='none';filt(R);si.focus();});
+
+          /* Product picker */
+          R.getElementById('pt').addEventListener('click',function(){R.getElementById('pk').classList.toggle('open');});
+          R.getElementById('ch').addEventListener('click',function(ev){
+              var c=ev.target.closest('.ch');if(!c)return;var p=c.dataset.p;
+              if(sel.has(p)){sel.delete(p);c.classList.remove('on');}else{sel.add(p);c.classList.add('on');}
+              filt(R);
+          });
+          R.getElementById('pcl').addEventListener('click',function(){sel.clear();R.querySelectorAll('.ch[data-p]').forEach(function(c){c.classList.remove('on');});filt(R);});
+
+          /* Type picker */
+          R.getElementById('tt').addEventListener('click',function(){R.getElementById('tk').classList.toggle('open');});
+          R.getElementById('tch').addEventListener('click',function(ev){
+              var c=ev.target.closest('.ch');if(!c)return;var t=c.dataset.tp;
+              if(selTypes.has(t)){selTypes.delete(t);c.classList.remove('on');}else{selTypes.add(t);c.classList.add('on');}
+              filt(R);
+          });
+          R.getElementById('tcl').addEventListener('click',function(){selTypes.clear();R.querySelectorAll('.ch[data-tp]').forEach(function(c){c.classList.remove('on');});filt(R);});
+
+          /* Importance picker */
+          R.getElementById('it').addEventListener('click',function(){R.getElementById('ik').classList.toggle('open');});
+          R.getElementById('ich').addEventListener('click',function(ev){
+              var c=ev.target.closest('.ch');if(!c)return;var l=c.dataset.ip;
+              if(selImp.has(l)){selImp.delete(l);c.classList.remove('on');}else{selImp.add(l);c.classList.add('on');}
+              filt(R);
+          });
+          R.getElementById('icl').addEventListener('click',function(){selImp.clear();R.querySelectorAll('.ch[data-ip]').forEach(function(c){c.classList.remove('on');});filt(R);});
+
+          /* Tags picker */
+          R.getElementById('gt').addEventListener('click',function(){R.getElementById('gk').classList.toggle('open');});
+          R.getElementById('gch').addEventListener('click',function(ev){
+              var c=ev.target.closest('.ch');if(!c)return;var t=c.dataset.tg;
+              if(selTags.has(t)){selTags.delete(t);c.classList.remove('on');}else{selTags.add(t);c.classList.add('on');}
+              filt(R);
+          });
+          R.getElementById('gcl').addEventListener('click',function(){selTags.clear();R.querySelectorAll('.ch[data-tg]').forEach(function(c){c.classList.remove('on');});filt(R);});
+
+          /* Section collapse/expand */
+          R.getElementById('co').addEventListener('click',function(ev){
+              var btn=ev.target.closest('[data-toggle]');
+              if(!btn)return;
+              var sec=btn.closest('.sec');
+              if(sec)sec.classList.toggle('closed');
+          });
+      }
+
+      if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
+  })();
+  }
+  </script>
+</body>
+</html>
